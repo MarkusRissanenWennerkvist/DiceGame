@@ -15,6 +15,10 @@ public class ConsoleView {
                 " och fick " + result.getScore() + " poäng.");
     }
 
+    public void showGameResult(GameResult result) {
+        System.out.println(result);
+    }
+
     public void showWinner(Player winner) {
         System.out.println("Spelet är slut! Vinnaren är " + winner.getName());
     }

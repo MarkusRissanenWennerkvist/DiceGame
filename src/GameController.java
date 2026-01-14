@@ -46,6 +46,8 @@ public class GameController {
             view.showTurnResult(result);
         }
 
-        view.showWinner(game.getWinner());
+        GameResult result = new GameResult(p1, p2);
+        view.showGameResult(result);
+
     }
 }

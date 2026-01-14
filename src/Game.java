@@ -56,8 +56,8 @@ public class Game {
     }
 
     public Player getWinner() {
-        Player winner = null;
-        int maxScore = 0;
+        Player winner = players.get(0);
+        int maxScore = winner.getScore();
         for (Player p : players) {
             if (p.getScore() > maxScore) {
                 maxScore = p.getScore();
