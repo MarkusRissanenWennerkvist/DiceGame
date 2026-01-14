@@ -5,7 +5,8 @@ public class ConsoleView {
     private Scanner scanner = new Scanner(System.in);
 
     public void promptRoll(String playerName) {
-        System.out.println(playerName + "s tur. Tryck Enter för att rulla tärningarna.");
+        String possessive = playerName.endsWith("s") ? "" : "s";
+        System.out.println(playerName + possessive + " tur. Tryck Enter för att rulla tärningarna.");
         scanner.nextLine();
     }
 
