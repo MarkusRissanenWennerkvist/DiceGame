@@ -1,10 +1,25 @@
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
 
         Player p1 = PlayerFactory.createPlayer("Manos");
-        p1.addScore(2);
-        System.out.println(p1.getName() + " har " + p1.getScore() + " poäng");
+        Player p2 = PlayerFactory.createPlayer("Anna");
+        List<Player> players = List.of(p1, p2);
+
+        DiceSet diceSet = new DiceSet(2, 6); // 2 tärningar, 6 sidor
+        ScoreRule scoreRule = new SimpleScoreRule(); // vi behöver skapa denna
+
+        Game game = new Game(players, diceSet, 5, 1, 0, scoreRule);
+        game.start();
+
+        while (!game.isGameOver()) {
+            TurnResult result = game.playTurn();
+            System.out.println(result.getPlayer().getName() + " rullade " + result.getRoll() + " och fick " + result.getScore() + " poäng");
+        }
+
+        System.out.println("Vinnaren är " + game.getWinner().getName());
 
     }
 }

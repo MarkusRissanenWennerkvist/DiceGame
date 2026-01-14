@@ -1,10 +1,12 @@
+import java.util.List;
+
 public class TurnResult {
 
     private Player player;
-    private int roll;
+    private List<Integer> roll;
     private int score;
 
-    public TurnResult (Player player, int roll, int score) {
+    public TurnResult (Player player, List<Integer> roll, int score) {
         this.player = player;
         this.roll = roll;
         this.score = score;
@@ -14,7 +16,7 @@ public class TurnResult {
         return player;
     }
 
-    public int getRoll() {
+    public List<Integer> getRoll() {
         return roll;
     }
 

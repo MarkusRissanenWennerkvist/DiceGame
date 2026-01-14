@@ -7,11 +7,11 @@ public class Game {
     private int rounds;
     private int currentRound;
     private int currentPlayerIndex;
-    private int scoreRule;
+    private ScoreRule scoreRule;
 
     public Game(){}
 
-    public Game(List<Player> players, DiceSet diceSet, int rounds, int currentRound, int currentPlayerIndex, int scoreRule) {
+    public Game(List<Player> players, DiceSet diceSet, int rounds, int currentRound, int currentPlayerIndex, ScoreRule scoreRule) {
         this.players = new ArrayList<>(players);
         this.diceSet = diceSet;
         this.rounds = rounds;
@@ -29,6 +29,8 @@ public class Game {
     public TurnResult playTurn() {
         Player current = getCurrentPlayer();
         List<Integer> roll = diceSet.rollAll();
+        int score = scoreRule.calculateScore(roll);
+        current.addScore(score);
 //        int score = scoreRule.calculateScore(current, roll);
 //        current.addScore(score);
 
