@@ -12,9 +12,9 @@ public class Main {
         ScoreRule scoreRule = new SimpleScoreRule(); // vi behöver skapa denna
 
         Game game = new Game(players, diceSet, 5, 1, 0, scoreRule);
-        game.start();
+        ConsoleView view = new ConsoleView();
+        GameController controller = new GameController(game, view);
 
-        ConsoleView consoleView = new ConsoleView(game);
-        consoleView.startGame();
+        controller.start();
     }
 }

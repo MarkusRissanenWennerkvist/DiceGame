@@ -2,26 +2,19 @@ import java.util.Scanner;
 
 public class ConsoleView {
 
-    private Game game;
+    private Scanner scanner = new Scanner(System.in);
 
-    public ConsoleView(Game game) {
-        this.game = game;
+    public void promptRoll(String playerName) {
+        System.out.println(playerName + "s tur. Tryck Enter för att rulla tärningarna.");
+        scanner.nextLine();
     }
 
-    public void startGame() {
-        Scanner scan = new Scanner(System.in);
-        game.start();
-        while (!game.isGameOver()) {
-            Player current = game.getCurrentPlayer();
-            System.out.println(current.getName() + "s tur. Tryck Enter för att rulla tärningarna.");
-            scan.nextLine();
+    public void showTurnResult(TurnResult result) {
+        System.out.println(result.getPlayer().getName() + " rullade " + result.getRoll() +
+                " och fick " + result.getScore() + " poäng.");
+    }
 
-            TurnResult result = game.playTurn();
-
-            System.out.println(current.getName() + " rullade " + result.getRoll() + " och fick " + result.getScore() + " poäng.");
-
-        }
-
-        System.out.println("Spelet är slut! Vinnaren är " + game.getWinner().getName());
+    public void showWinner(Player winner) {
+        System.out.println("Spelet är slut! Vinnaren är " + winner.getName());
     }
 }
