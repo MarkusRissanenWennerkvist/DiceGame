@@ -8,10 +8,10 @@ public class GameManager {
     }
 
     public Game createGame() { //Behöver parametrar?
-        return Game();
+        return new Game();
     }
 
     public Game getGame() {
-        return Game;
+        return new Game();
     }
 }
