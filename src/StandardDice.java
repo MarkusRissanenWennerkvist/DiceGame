@@ -1,7 +1,6 @@
 import java.util.Random;
 
 public class StandardDice implements Dice {
-
     private int sides;
     private Random random = new Random();
 
@@ -17,5 +16,10 @@ public class StandardDice implements Dice {
     @Override
     public int getSides() {
         return sides;
+    }
+
+    @Override
+    public void setSides(int sides) {
+        this.sides = sides;
     }
 }
