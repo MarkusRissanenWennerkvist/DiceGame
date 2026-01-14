@@ -28,9 +28,9 @@ public class Game {
 
     public TurnResult playTurn() {
         Player current = getCurrentPlayer();
-        int roll = diceSet.rollAll();
-        int score = scoreRule.calculateScore(current, roll);
-        current.addScore(score);
+        List<Integer> roll = diceSet.rollAll();
+//        int score = scoreRule.calculateScore(current, roll);
+//        current.addScore(score);
 
         TurnResult turnResult = new TurnResult(current, roll, score);
 
