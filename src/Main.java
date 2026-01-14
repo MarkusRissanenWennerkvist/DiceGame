@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
 
         Player p1 = PlayerFactory.createPlayer("Manos");
-        Player p2 = PlayerFactory.createPlayer("Anna");
+        Player p2 = PlayerFactory.createPlayer("Markus");
         List<Player> players = List.of(p1, p2);
 
         DiceSet diceSet = new DiceSet(2, 6); // 2 tärningar, 6 sidor
@@ -14,12 +14,7 @@ public class Main {
         Game game = new Game(players, diceSet, 5, 1, 0, scoreRule);
         game.start();
 
-        while (!game.isGameOver()) {
-            TurnResult result = game.playTurn();
-            System.out.println(result.getPlayer().getName() + " rullade " + result.getRoll() + " och fick " + result.getScore() + " poäng");
-        }
-
-        System.out.println("Vinnaren är " + game.getWinner().getName());
-
+        ConsoleView consoleView = new ConsoleView(game);
+        consoleView.startGame();
     }
 }
