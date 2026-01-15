@@ -6,6 +6,7 @@ public class GameController {
     private Game game; // kan starta som null
     private ConsoleView view;
     private Scanner scanner = new Scanner(System.in);
+    private final NameRegistry registry = new NameRegistry();
 
     public GameController(ConsoleView view) { // ta bort Game från konstruktorn
         this.view = view;
@@ -17,7 +18,18 @@ public class GameController {
             String name = scanner.nextLine();
 
             try {
-                return PlayerFactory.createPlayer(name);
+                // 1) validera grundkrav (null/blank)
+                Player player = PlayerFactory.createPlayer(name);
+
+                // 2) kolla dublett + registrera
+                if (!registry.isAvailable(player.getName())) {
+                    System.out.println("Namnet är redan taget, försök igen.");
+                    continue;
+                }
+                registry.register(player.getName());
+
+                return player;
+
             } catch (IllegalArgumentException e) {
                 System.out.println("Ogiltigt namn, försök igen.");
             }
