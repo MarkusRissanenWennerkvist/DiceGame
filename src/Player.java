@@ -1,21 +1,6 @@
-public class Player {
-    private String name;
-    private int score;
+public interface Player {
 
-    public Player(String name) {
-        this.name = name;
-        this.score = 0;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public int getScore() {
-        return this.score;
-    }
-
-    public void addScore(int addScore) {
-        this.score += addScore;
-    }
+    String getName();
+    int getScore();
+    void addScore(int addScore);
 }

@@ -19,7 +19,7 @@ public class GameController {
 
             try {
                 // 1) validera grundkrav (null/blank)
-                Player player = PlayerFactory.createPlayer(name);
+                Player player = PlayerFactory.createPlayer(PlayerType.OFFLINE, name);
 
                 // 2) kolla dublett + registrera
                 if (!registry.isAvailable(player.getName())) {
